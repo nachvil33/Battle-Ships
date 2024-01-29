@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Battleship Game</title>
-  <link rel="stylesheet" type="text/css" href="./styles.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-</head>
+<script defer src="bundle.js"></script></head>
 
 <body>
   <div id="game-container">
@@ -19,27 +19,27 @@
     <button id="start-button">Iniciar Juego</button>
     <div id="player-container" class="ship-container">
       <div class="ship" data-ship="Carrier" draggable="true">
-        <img src="./Aircraft_carrier.png" alt="Carrier">
+        <img src="src/Aircraft_carrier.png" alt="Carrier">
         <span class="counter">x3</span>
         <p class="ship-name">Carrier</p>
       </div>
       <div class="ship" data-ship="Battleship" draggable="true">
-        <img src="./Battleship.png" alt="Battleship">
+        <img src="src/Battleship.png" alt="Battleship">
         <span class="counter">x4</span>
         <p class="ship-name">Battleship</p>
       </div>
       <div class="ship" data-ship="Cruiser" draggable="true">
-        <img src="./Cruiser.png" alt="Cruiser">
+        <img src="src/Cruiser.png" alt="Cruiser">
         <span class="counter">x2</span>
         <p class="ship-name">Cruiser</p>
       </div>
       <div class="ship" data-ship="Submarine" draggable="true">
-        <img src="./Submarine.png" alt="Submarine">
+        <img src="src/Submarine.png" alt="Submarine">
         <span class="counter">x2</span>
         <p class="ship-name">Submarine</p>
       </div>
       <div class="ship" data-ship="Destroyer" draggable="true">
-        <img src="./Destroyer.png" alt="Destroyer">
+        <img src="src/Destroyer.png" alt="Destroyer">
         <span class="counter">x2</span>
         <p class="ship-name">Destroyer</p>
       </div>
@@ -47,7 +47,7 @@
     <div id="player-board" class="board"></div>
     <div id="computer-board" class="board"></div>
   </div>
-  <script defer type="module" src="./dist/bundle.js"></script>
+  <script type="module" src="dist/bundle.js"></script>
 </body>
 
 </html>

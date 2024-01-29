@@ -5,9 +5,7 @@
   "main": "Game.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production",
-    "watch": "webpack --watch --mode development",
-    "test": "jest"
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -25,21 +23,13 @@
   },
   "homepage": "https://github.com/nachvil33/Batleships#readme",
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/preset-env": "^7.23.9",
-    "@testing-library/jest-dom": "^6.3.0",
-    "babel-jest": "^29.7.0",
-    "css-loader": "^6.9.1",
     "eslint": "^8.8.0",
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "style-loader": "^3.3.4",
     "ts-loader": "^8.2.0",
     "typescript": "^5.3.3",
-    "webpack": "^5.90.0",
-    "webpack-cli": "^4.10.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.15.1"
   }
 }
