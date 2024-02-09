@@ -16,16 +16,15 @@
       <p>Coloca tus barcos en el tablero. Puedes rotarlos usando la tecla 'R'.</p>
       <p>Haz clic en el tablero para posicionar tus barcos. Juega contra la máquina.</p>
     </div>
-    <button id="start-button">Iniciar Juego</button>
     <div id="player-container" class="ship-container">
       <div class="ship" data-ship="Carrier" draggable="true">
         <img src="./Aircraft_carrier.png" alt="Carrier">
-        <span class="counter">x3</span>
+        <span class="counter">x1</span>
         <p class="ship-name">Carrier</p>
       </div>
       <div class="ship" data-ship="Battleship" draggable="true">
         <img src="./Battleship.png" alt="Battleship">
-        <span class="counter">x4</span>
+        <span class="counter">x2</span>
         <p class="ship-name">Battleship</p>
       </div>
       <div class="ship" data-ship="Cruiser" draggable="true">
@@ -35,7 +34,7 @@
       </div>
       <div class="ship" data-ship="Submarine" draggable="true">
         <img src="./Submarine.png" alt="Submarine">
-        <span class="counter">x2</span>
+        <span class="counter">x1</span>
         <p class="ship-name">Submarine</p>
       </div>
       <div class="ship" data-ship="Destroyer" draggable="true">
@@ -43,11 +42,13 @@
         <span class="counter">x2</span>
         <p class="ship-name">Destroyer</p>
       </div>
-    </div>
+    </div> <!-- Cierre de #player-container -->
+    
     <div id="player-board" class="board"></div>
     <div id="computer-board" class="board"></div>
-  </div>
-  <script defer type="module" src="./dist/bundle.js"></script>
+    <button id="start-button" disabled>Iniciar Juego</button>
+  </div> <!-- Cierre de #game-container -->
+  <script defer type="module" src="./main.js"></script>
 </body>
 
 </html>

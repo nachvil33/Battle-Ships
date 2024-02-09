@@ -1,4 +1,4 @@
-function createGameboard() {
+export function createGameboard() {
   const board = Array(10).fill(null).map(() => Array(10).fill(null));
   const ships = [];
 
@@ -49,9 +49,9 @@ function createGameboard() {
 
   return {
     board,
+    canPlaceShip, 
     placeShip,
     receiveAttack,
     allShipsSunk
   };
 }
-module.exports = createGameboard;

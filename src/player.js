@@ -1,4 +1,4 @@
-function createPlayer(gameboard, difficulty = 'basic') {
+export function createPlayer(gameboard, difficulty = 'basic') {
   let lastHit = null;
   let lastHitPattern = [];
 
@@ -59,5 +59,3 @@ function createPlayer(gameboard, difficulty = 'basic') {
 
   return { takeTurn };
 }
-
-module.exports = createPlayer;

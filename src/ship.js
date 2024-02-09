@@ -1,4 +1,4 @@
-function createShip(length) {
+export function createShip(length) {
   const ship = {
     length,
     hits: 0,
@@ -11,4 +11,3 @@ function createShip(length) {
   };
   return ship;
 }
-module.exports = createShip;
