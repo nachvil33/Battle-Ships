@@ -1,182 +1,108 @@
-import { createShip } from './ship.js';
-import { createGameboard } from './gameboard.js';
-import { createPlayer } from './player.js';
+document.addEventListener('DOMContentLoaded', () => {
+  const playerContainer = document.getElementById('player-container');
+  const playerBoard = document.getElementById('player-board');
+  const computerBoard = document.getElementById('computer-board');
+  const startButton = document.getElementById('start-button');
 
-let playerGameboard;
-let computerGameboard;
-let player;
-let computer;
-let turnCounter = 0;
-let draggingShip = null;
+  if (playerContainer && playerBoard && computerBoard && startButton) {
+    initBoard(playerBoard, 'player-cell');
+    initBoard(computerBoard, 'computer-cell');
 
-function dragStart(e) {
-  draggingShip = e.target;
-  const shipType = draggingShip.dataset.ship;
-  e.dataTransfer.setData('ship', shipType);
-  e.dataTransfer.setData('text/plain', `Dragging ${shipType}`);
-  draggingShip.classList.add('dragging');
-  console.log(`Starting to drag: ${shipType}`);
+    addEvents(playerBoard, 'player-cell');
+    addDraggableShips(playerContainer);
+
+    startButton.addEventListener('click', startGame);
+  } else {
+    console.error('One or more elements not found.');
+  }
+});
+
+function initBoard(board, cellClass) {
+  for (let i = 0; i < 100; i++) {
+    const cell = document.createElement('div');
+    cell.classList.add(cellClass);
+    cell.dataset.row = Math.floor(i / 10).toString();
+    cell.dataset.col = (i % 10).toString();
+    board.appendChild(cell);
+  }
 }
 
-function dragEnd() {
-  draggingShip.classList.remove('dragging');
-  draggingShip = null;
-}
-
-function allowDrop(e) {
-  e.preventDefault();
-}
-
-function dragOver(e) {
-  e.preventDefault();
-  const cell = e.target;
-  if (cell.classList.contains('drop-cell')) {
-    const row = parseInt(cell.dataset.row);
-    const col = parseInt(cell.dataset.col);
-    const isVertical = e.shiftKey; // Verifica si la tecla shift está presionada
-    const ship = createShip(getShipLength(draggingShip.dataset.ship));
-
-    const isValidDrop = playerGameboard.canPlaceShip(ship, row, col, isVertical);
-    if (isValidDrop) {
-      cell.classList.remove('invalid');
-    } else {
-      cell.classList.add('invalid');
+function addEvents(board, cellClass) {
+  board.addEventListener('click', (event) => {
+    const targetCell = event.target;
+    if (targetCell.classList.contains(cellClass)) {
+      console.log('Cell clicked:', targetCell.dataset.row, targetCell.dataset.col);
     }
-  }
+  });
+
+  board.addEventListener('dragover', (event) => {
+    event.preventDefault();
+  });
+
+  board.addEventListener('drop', (event) => {
+    const targetCell = event.target;
+    const draggedShip = document.querySelector('.dragging');
+    if (targetCell.classList.contains(cellClass) && draggedShip) {
+      targetCell.appendChild(draggedShip);
+      draggedShip.classList.remove('dragging');
+    }
+  });
 }
 
-function drop(e) {
-  e.preventDefault();
-  const cell = e.target;
-  if (cell.classList.contains('drop-cell') && !cell.classList.contains('invalid')) {
-    const row = parseInt(cell.dataset.row);
-    const col = parseInt(cell.dataset.col);
-    const isVertical = e.shiftKey; // Verifica si la tecla shift está presionada
-    const ship = createShip(getShipLength(draggingShip.dataset.ship));
+function addDraggableShips(container) {
+  const ships = container.querySelectorAll('.ship');
 
-    playerGameboard.placeShip(ship, row, col, isVertical);
-    renderBoard(playerGameboard.board, 'player-board', true);
-  }
-}
+  ships.forEach((ship) => {
+    const draggedShip = ship;
 
-function getShipLength(shipType) {
-  switch (shipType) {
-    case 'Carrier':
-      return 5;
-    case 'Battleship':
-      return 4;
-    case 'Cruiser':
-      return 3;
-    case 'Submarine':
-      return 1;
-    case 'Destroyer':
-      return 2;
-    default:
-      return 1;
-  }
-}
-
-document.querySelectorAll('.ship').forEach(ship => {
-  ship.addEventListener('dragstart', dragStart);
-  ship.addEventListener('dragend', dragEnd);
-});
-
-document.getElementById('player-board').addEventListener('dragover', allowDrop);
-document.getElementById('player-board').addEventListener('dragenter', dragOver);
-document.getElementById('player-board').addEventListener('drop', drop);
-
-document.getElementById('start-button').addEventListener('click', () => {
-  const randomStart = Math.floor(Math.random() * 2);
-  console.log(randomStart === 0 ? 'Player starts!' : 'Computer starts!');
-  initGame();
-  if (randomStart === 1) {
-    computerPlay();
-  }
-});
-
-function renderBoard(board, containerId, isPlayer) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = '';
-  board.forEach((row, rowIndex) => {
-    row.forEach((cell, colIndex) => {
-      const cellElement = document.createElement('div');
-      cellElement.classList.add('cell');
-      cellElement.classList.add(isPlayer ? 'player-cell' : 'computer-cell');
-      cellElement.dataset.row = rowIndex;
-      cellElement.dataset.col = colIndex;
-      if (isPlayer) {
-        cellElement.classList.add('drop-cell');
+    draggedShip.addEventListener('dragstart', (event) => {
+      if (event.dataTransfer) {
+        // Pasar el id y la longitud del barco en el formato "id-longitud"
+        event.dataTransfer.setData('text/plain', `${draggedShip.id}-${draggedShip.dataset.length}`);
       }
-      container.appendChild(cellElement);
+      draggedShip.classList.add('dragging');
+    });
+
+    draggedShip.addEventListener('dragend', (event) => {
+      draggedShip.classList.remove('dragging');
     });
   });
 }
 
-function computerPlay() {
-  const computerTurnResult = computer.takeTurn(playerGameboard);
-  console.log('Computer attacked:', computerTurnResult);
-  turnCounter++;
-  updateCounters();
-  checkGameOver();
+function startGame() {
+  // Verificar si todas las naves del jugador han sido colocadas
+  const shipsInContainer = document.querySelectorAll('.ship');
+  const shipsOnBoard = document.querySelectorAll('#player-board .ship');
+
+  if (shipsInContainer.length === 0 && shipsOnBoard.length > 0) {
+    // Iniciar el juego y permitir que la máquina coloque sus barcos
+    // Lógica para colocar barcos de la máquina
+    placeComputerShips();
+    // Resto de la lógica del juego
+    console.log('Juego iniciado');
+  } else {
+    alert('Debes colocar todas las naves antes de iniciar el juego.');
+  }
 }
 
-function initGame() {
-  playerGameboard = createGameboard();
-  computerGameboard = createGameboard();
-  player = createPlayer(playerGameboard);
-  computer = createPlayer(computerGameboard, 'intermediate');
-  placeShips(playerGameboard);
-  placeShips(computerGameboard);
-  renderBoard(playerGameboard.board, 'player-board', true);
-  renderBoard(computerGameboard.board, 'computer-board', false);
-  turnCounter = 0;
-  updateCounters();
-}
+function placeComputerShips() {
+  // Obtener el tablero de la máquina
+  const computerGameboard = createGameboard();
 
-function placeShips(gameboard) {
-  const ships = [createShip(5), createShip(4), createShip(3), createShip(3), createShip(2)];
-  ships.forEach(ship => {
-    let placed = false;
-    while (!placed) {
-      let row = Math.floor(Math.random() * 10);
-      let col = Math.floor(Math.random() * 10);
-      let isVertical = Math.random() > 0.5;
-      if (gameboard.canPlaceShip(ship, row, col, isVertical)) {
-        gameboard.placeShip(ship, row, col, isVertical);
-        placed = true;
-      }
+  // Obtener las naves de la máquina
+  const computerShips = document.querySelectorAll('#computer-board .ship');
+
+  computerShips.forEach((ship) => {
+    // Lógica para colocar los barcos de la máquina de manera aleatoria
+    const randomRow = Math.floor(Math.random() * 10);
+    const randomCol = Math.floor(Math.random() * 10);
+    const isVertical = Math.random() < 0.5;
+
+    try {
+      computerGameboard.placeShip(ship, randomRow, randomCol, isVertical);
+    } catch (error) {
+      // Si hay un error al colocar el barco, intentar nuevamente
+      placeComputerShips();
     }
   });
 }
-
-function updateCounters() {
-  console.log('Turn:', turnCounter);
-}
-
-function checkGameOver() {
-  if (playerGameboard.allShipsSunk() || computerGameboard.allShipsSunk()) {
-    console.log('Game Over');
-    // Implement additional actions when the game ends.
-  }
-}
-
-function playerClick(e) {
-  const cell = e.target;
-  if (cell.classList.contains('cell') && !cell.classList.contains('cell-attacked')) {
-    const row = parseInt(cell.dataset.row);
-    const col = parseInt(cell.dataset.col);
-    const result = playerGameboard.receiveAttack(row, col);
-    cell.classList.add('cell-attacked');
-    if (result) {
-      console.log('Player attacked:', { row, col, result });
-      checkGameOver();
-    } else {
-      // Implement additional actions in case the player misses the attack.
-    }
-    setTimeout(computerPlay, 500);
-  }
-}
-
-document.getElementById('player-board').addEventListener('click', playerClick);
-
-initGame();

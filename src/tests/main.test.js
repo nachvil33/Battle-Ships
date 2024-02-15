@@ -3,7 +3,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/dom';
 import createShip from '../Ship.js';
 import createGameboard from '../GameBoard.js';
 import createPlayer from '../Player.js';
-import '../Game.js';
+import '../main.js';
 
 jest.spyOn(global.Math, 'random').mockReturnValue(0.5);
 
