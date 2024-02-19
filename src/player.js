@@ -1,13 +1,6 @@
-export function createPlayer(gameboard, difficulty = 'basic') {
-  function randomAttack() {
-    let row, col;
-    do {
-      row = Math.floor(Math.random() * 10);
-      col = Math.floor(Math.random() * 10);
-    } while (gameboard.board[row][col] !== null);
-    return { row, col };
-  }
+import { randomAttack } from './helpers.js';
 
+export function createPlayer(gameboard, difficulty = 'basic') {
   function takeTurn(enemyGameboard) {
     let target;
     switch (difficulty) {

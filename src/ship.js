@@ -1,9 +1,12 @@
-export function createShip(length) {
+// ship.js
+export function createShip(shipData) {
   const ship = {
-    length,
+    name: shipData.name,
+    size: shipData.size,
     hits: 0,
+    images: shipData.images,
     isSunk() {
-      return this.hits === this.length;
+      return this.hits === this.size;
     },
     hit() {
       this.hits++;
