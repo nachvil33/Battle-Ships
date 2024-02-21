@@ -1,4 +1,5 @@
-// gameboard.js
+import { createShip } from './ship';
+import shipFactory from './shipFactory.js';
 import { createShip } from './ship';
 
 export function createGameboard() {

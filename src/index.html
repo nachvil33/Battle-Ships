@@ -1,57 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Battleship Game</title>
-  <link rel="stylesheet" type="text/css" href="./styles.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<script defer type="module" src="./player.js"></script>
-<script defer type="module" src="./gameboard.js"></script>
-<script defer type="module" src="./ship.js"></script>
-<script defer type="module" src="./main.js"></script>
-
 <body>
-  <div id="game-container">
-    <div id="instructions">
-      <h2>Reglas del Juego:</h2>
-      <p>Coloca tus barcos en el tablero. Puedes rotarlos usando la tecla 'R'.</p>
-      <p>Haz clic en el tablero para posicionar tus barcos. Juega contra la máquina.</p>
-    </div>
-    <div id="player-container" class="ship-container">
-      <div class="ship" data-ship="Carrier" data-length="4" draggable="true">
-        <img src="./Aircraft_carrier.png" alt="Carrier" class="ship-image">
-        <span class="counter">x1</span>
-        <p class="ship-name">Carrier</p>
-      </div>
-      <div class="ship" data-ship="Battleship" data-length="3" draggable="true">
-        <img src="./Battleship.png" alt="Battleship" class="ship-image">
-        <span class="counter">x1</span>
-        <p class="ship-name">Battleship</p>
-      </div>
-      <div class="ship" data-ship="Cruiser" data-length="2" draggable="true">
-        <img src="./Cruiser.png" alt="Cruiser" class="ship-image">
-        <span class="counter">x2</span>
-        <p class="ship-name">Cruiser</p>
-      </div>
-      <div class="ship" data-ship="Submarine" data-length="1" draggable="true">
-        <img src="./Submarine.png" alt="Submarine" class="ship-image">
-        <span class="counter">x1</span>
-        <p class="ship-name">Submarine</p>
-      </div>
-      <div class="ship" data-ship="Destroyer" data-length="3" draggable="true">
-        <img src="./Destroyer.png" alt="Destroyer" class="ship-image">
-        <span class="counter">x2</span>
-        <p class="ship-name">Destroyer</p>
-      </div>
-    </div>
-
+  <div id="player-container" class="is-fullheight">
     <div id="player-board" class="board"></div>
-    <div id="computer-board" class="board"></div>
-    <button id="start-button" disabled>Iniciar Juego</button>
   </div>
+  <div id="computer-board" class="board has-ocean"></div>
+  <button id="start-button">Start Game</button>
+  <script src="main.js"></script>
 </body>
-
 </html>
