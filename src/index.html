@@ -2,16 +2,185 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Battleship Game</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Battleships Game</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-  <div id="player-container" class="is-fullheight">
-    <div id="player-board" class="board"></div>
+  <div class="columns">
+
+    <aside class="column is-3 has-background-light is-fullheight is-hidden-mobile">
+      <br>
+      <p class="has-text-centered has-text-info-dark has-text-weight-bold is-size-4">
+        Created with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span><br>by <a href="http://github.com/LuisHernandezCoding" class="has-text-info is-underlined">Luis Hernandez</a>
+      </p>
+      <hr>
+      <div class="section p-4">
+        <div class="content">
+          <h4 class="title is-5 has-text-info-dark has-text-weight-bold">Game Rules</h4>
+          <p class="has-text-info-dark">Welcome to the Battleships game! Here are the rules:</p>
+          <ul class="has-text-info-dark">
+            <li>Each player has a 10x10 board with ships.</li>
+            <li>Place your ships on the board without overlapping.</li>
+            <li>Take turns shooting at the enemy board.</li>
+            <li>A hit is marked with red, a miss with white.</li>
+            <li>Sink all enemy ships to win.</li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <div class="column is-9 is-fullheight has-ocean">
+      <div class="container px-2">
+        <div class="section pt-4">
+          <div class="columns is-multiline">
+            <div class="column is-10">
+              <div id="alert"></div>
+            </div>
+          </div>
+          <div class="columns is-multiline">
+            <div class="column is-5">
+              <div class="box has-background-info-light">
+                <h4 class="title is-4 has-text-info-dark has-text-weight-bold">
+                  Player Board
+                </h4>
+                <board id="player1" class="board has-ocean"></board>
+                <div class="tittle-tag has-text-left is-size-4">
+                  <span id="playerAction" class="tag is-success is-hidden"></span>
+                  <span id="placingShip" class="tag is-transparent is-hidden"></span>
+                </div>
+                <br>
+                <div id="player1Card" class="card has-background-grey-darker">
+                  <div class="card-header">
+                    <div class="has-text-white has-text-weight-bold p-2">
+                      Player ships
+                      <span class="icon has-text-white"><i class="fas fa-ship"></i></span>
+                    </div>
+                  </div>
+                  <div class="content p-2 has-text-centered">
+                    <div class="columns">
+                      <div class="column">
+                        <div id="aircraftcarrier" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger" class="is-size-5 has-text-grey-light">0</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/aircraftcarrier.png" alt="aircraftcarrier" width="75px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 5</span>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div id="battleship" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger">0</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/battleship.png" alt="battleship" width="60px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 4</span>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div id="submarine" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger">0</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/submarine.png" alt="submarine" width="45px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 3</span>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div id="cruiser" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger">0</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/cruiser.png" alt="cruiser" width="45px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 3</span>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div id="destroyer" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger">0</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/destroyer.png" alt="destroyer" width="30px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 2</span>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div id="boat" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger">0</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/boat.png" alt="patrolShip" width="30px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 2</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-5">
+              <div class="box has-background-info-light">            
+                <h4 class="title is-4 has-text-info-dark has-text-weight-bold">
+                  Computer Board
+                </h4>
+                <board id="player2" class="board has-ocean"></board>
+                <div class="tittle-tag has-text-left is-size-4" id="status">
+                  <span class="tag is-warning is-hidden" id="enemyAction">
+                    Waiting
+                  </span>
+                </div>
+                <br>
+                <div id="player2Card" class="card has-background-grey-darker">
+                  <div class="card-header">
+                    <div class="has-text-white has-text-weight-bold p-2">
+                      Computer ships
+                      <span class="icon has-text-white"><i class="fas fa-ship"></i></span>
+                    </div>
+                  </div>
+                  <div class="content p-2 has-text-centered">
+                    <div class="columns">
+                      <div class="column">
+                        <div id="aircraftcarrier" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger">1</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/aircraftcarrier.png" alt="aircraftcarrier" width="75px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 5</span>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div id="battleship" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger">1</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/battleship.png" alt="battleship" width="60px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 4</span>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div id="submarine" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger">1</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/submarine.png" alt="submarine" width="45px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 3</span>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div id="cruiser" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger">1</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/cruiser.png" alt="cruiser" width="45px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 3</span>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div id="destroyer" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger">1</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/destroyer.png" alt="destroyer" width="30px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 2</span>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div id="patrolShip" class="is-size-7 has-text-weight-bold has-text-white">
+                          <span id="quantity" class="is-size-5 has-text-danger">1</span> / <span id="quantityTotal">1</span><br>
+                          <img src="../src/images/boat.png" alt="boat" width="30px"><br>
+                          <span id="size" class="is-size-7 has-text-weight-bold has-text-white">Size: 2</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="computer-board" class="board has-ocean"></div>
-  <button id="start-button">Start Game</button>
-  <script src="main.js"></script>
+  <script src="bundle.js"></script>
 </body>
 </html>

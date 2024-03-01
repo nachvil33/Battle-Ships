@@ -7,10 +7,10 @@ import aircraftcarrier4 from '../images/aircraftcarrier4.png';
 import aircraftcarrier5 from '../images/aircraftcarrier5.png';
 
 import battleship from '../images/battleship.png';
-import battleship1 from '../images/battleships1.png';
-import battleship2 from '../images/battleships2.png';
-import battleship3 from '../images/battleships3.png';
-import battleship4 from '../images/battleships4.png';
+import battleship1 from '../images/battleship1.png';
+import battleship2 from '../images/battleship2.png';
+import battleship3 from '../images/battleship3.png';
+import battleship4 from '../images/battleship4.png';
 
 import cruiser from '../images/cruiser.png';
 import cruiser1 from '../images/cruiser1.png';

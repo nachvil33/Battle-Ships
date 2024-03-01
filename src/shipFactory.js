@@ -1,4 +1,3 @@
-// ship.js
 export function createShip(shipData) {
   const ship = {
     name: shipData.name,

@@ -2,7 +2,7 @@
     "name": "battleships",
     "version": "1.0.0",
     "description": "A game of battleships",
-    "main": "main.js",
+    "main": "index.js",
     "scripts": {
       "start": "webpack-dev-server --open --mode development",
       "build": "webpack --mode production",
