@@ -5,8 +5,8 @@ import {
   updatePlacingShip,
   createAlert,
   startPlacing,
-} from './lib/domManager.js';
-import game from './lib/game.js';
+} from './domManager.js';
+import game from './game.js';
 
 const gameInstance = game();
 
