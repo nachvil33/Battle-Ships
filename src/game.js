@@ -1,5 +1,5 @@
 import { gameboardFactory } from './gameboardFactory.js';
-import shipFactory from './shipFactory.js';
+import { createShip } from './shipFactory.js';
 
 export default () => {
   const game = {
@@ -14,12 +14,12 @@ export default () => {
     },
     randomPlaceShips(board) {
       const ships = [
-        { name: 'Aircraftcarrier', value: shipFactory(5) },
-        { name: 'Battleship', value: shipFactory(4) },
-        { name: 'Cruiser', value: shipFactory(3) },
-        { name: 'Submarine', value: shipFactory(3) },
-        { name: 'Destroyer', value: shipFactory(2) },
-        { name: 'Patroller', value: shipFactory(2) },
+        { name: 'Aircraftcarrier', value: createShip({size: 5}) },
+        { name: 'Battleship', value: createShip({size: 4}) },
+        { name: 'Cruiser', value: createShip({size: 3}) },
+        { name: 'Submarine', value: createShip({size: 3}) },
+        { name: 'Destroyer', value: createShip({size: 2}) },
+        { name: 'Boat', value: createShip({size: 2}) },
       ];
       ships.forEach((ship) => {
         let coordinates = [];
