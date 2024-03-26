@@ -8,11 +8,12 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'images/[hash][ext][query]'
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Battleships Game',
-      template: 'src/index.html', // Asegúrate de tener una plantilla de index.html en src
+      template: 'src/index.html',
     }),
   ],
   module: {

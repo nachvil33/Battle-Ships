@@ -1,41 +1,41 @@
 // Get the images from webpack
-import aircraftcarrierImg from '../src/images/aircraftcarrier.png';
-import aircraftcarrier1 from '../src/images/aircraftcarrier1.png';
-import aircraftcarrier2 from '../src/images/aircraftcarrier2.png';
-import aircraftcarrier3 from '../src/images/aircraftcarrier3.png';
-import aircraftcarrier4 from '../src/images/aircraftcarrier4.png';
-import aircraftcarrier5 from '../src/images/aircraftcarrier5.png';
+import aircraftcarrier from './images/aircraftcarrier.png';
+import aircraftcarrier1 from './images/aircraftcarrier1.png';
+import aircraftcarrier2 from './images/aircraftcarrier2.png';
+import aircraftcarrier3 from './images/aircraftcarrier3.png';
+import aircraftcarrier4 from './images/aircraftcarrier4.png';
+import aircraftcarrier5 from './images/aircraftcarrier5.png';
 
-import battleship from '../src/images/battleship.png';
-import battleship1 from '../src/images/battleship1.png';
-import battleship2 from '../src/images/battleship2.png';
-import battleship3 from '../src/images/battleship3.png';
-import battleship4 from '../src/images/battleship4.png';
+import battleship from './images/battleship.png';
+import battleship1 from './images/battleship1.png';
+import battleship2 from './images/battleship2.png';
+import battleship3 from './images/battleship3.png';
+import battleship4 from './images/battleship4.png';
 
-import cruiser from '../src/images/cruiser.png';
-import cruiser1 from '../src/images/cruiser1.png';
-import cruiser2 from '../src/images/cruiser2.png';
-import cruiser3 from '../src/images/cruiser3.png';
+import cruiser from './images/cruiser.png';
+import cruiser1 from './images/cruiser1.png';
+import cruiser2 from './images/cruiser2.png';
+import cruiser3 from './images/cruiser3.png';
 
-import destroyer from '../src/images/destroyer.png';
-import destroyer1 from '../src/images/destroyer1.png';
-import destroyer2 from '../src/images/destroyer2.png';
-import destroyer3 from '../src/images/destroyer3.png';
+import destroyer from './images/destroyer.png';
+import destroyer1 from './images/destroyer1.png';
+import destroyer2 from './images/destroyer2.png';
+import destroyer3 from './images/destroyer3.png';
 
-import submarine from '../src/images/submarine.png';
-import submarine1 from '../src/images/submarine1.png';
-import submarine2 from '../src/images/submarine2.png';
+import submarine from './images/submarine.png';
+import submarine1 from './images/submarine1.png';
+import submarine2 from './images/submarine2.png';
 
-import boat from '../src/images/boat.png';
-import boat1 from '../src/images/boat1.png';
-import boat2 from '../src/images/boat2.png';
+import boat from './images/boat.png';
+import boat1 from './images/boat1.png';
+import boat2 from './images/boat2.png';
 
-import explosion from '../src/images/explosion.png';
+import explosion from './images/explosion.png';
 
 const aircraftcarrierShip = {
   name: 'Aircraftcarrier',
   size: 5,
-  fullImage: aircraftcarrierImg,
+  fullImage: aircraftcarrier,
   images: [aircraftcarrier1, aircraftcarrier2, aircraftcarrier3, aircraftcarrier4, aircraftcarrier5],
 };
 
