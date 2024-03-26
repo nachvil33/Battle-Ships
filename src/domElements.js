@@ -10,8 +10,8 @@ const enemyStatusTag = document.getElementById('status').querySelector('span');
 // Get the DOM elements from the player cards
 const player1Card = document.getElementById('player1Card');
 // Aircrafcarrier
-const player1Aircrafcarrier = player1Card.querySelector('#aircrafcarrier');
-const player1AircrafcarrierQuantity = player1Carrier.querySelector('#quantity');
+const player1Aircraftcarrier = player1Card.querySelector('#aircraftcarrier');
+const player1AircraftcarrierQuantity = player1Aircraftcarrier.querySelector('#quantity');
 // Battleship
 const player1Battleship = player1Card.querySelector('#battleship');
 const player1BattleshipQuantity = player1Battleship.querySelector('#quantity');
@@ -31,8 +31,8 @@ const player1BoatQuantity = player1Boat.querySelector('#quantity');
 // Get the DOM elements from the computer cards
 const player2Card = document.getElementById('player2Card');
 // Carrier
-const player2Aircrafcarrier = player2Card.querySelector('#aircraftcarrier');
-const player2AircrafcarrierQuantity = player2Aircrafcarrier.querySelector('#quantity');
+const player2Aircraftcarrier = player2Card.querySelector('#aircraftcarrier');
+const player2AircraftcarrierQuantity = player2Aircraftcarrier.querySelector('#quantity');
 // Battleship
 const player2Battleship = player2Card.querySelector('#battleship');
 const player2BattleshipQuantity = player2Battleship.querySelector('#quantity');
@@ -59,8 +59,8 @@ export default function getDomElements() {
     alert,
     enemyStatusTag,
     player1Card,
-    player1Aircrafcarrier,
-    player1AircrafcarrierQuantity,
+    player1Aircraftcarrier,
+    player1AircraftcarrierQuantity,
     player1Battleship,
     player1BattleshipQuantity,
     player1Submarine,
@@ -72,8 +72,8 @@ export default function getDomElements() {
     player1Boat,
     player1BoatQuantity,
     player2Card,
-    player2Aircrafcarrier,
-    player2AircrafcarrierQuantity,
+    player2Aircraftcarrier,
+    player2AircraftcarrierQuantity,
     player2Battleship,
     player2BattleshipQuantity,
     player2Submarine,
